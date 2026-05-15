@@ -5,7 +5,6 @@ import { useThemeStore } from "@/stores/theme";
 import { ProviderStatus } from "@/components/ai/ProviderStatus";
 import { motion } from "framer-motion";
 import { Moon, Sun, LogOut, User, Command } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function Header() {
   const { user, logout } = useAuthStore();

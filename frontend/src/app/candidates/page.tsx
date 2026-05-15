@@ -15,12 +15,7 @@ export default function CandidatesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [viewMode, setViewMode] = useState<ViewMode>("ranking");
 
-  useEffect(() => {
-    loadCandidates();
-  }, []);
-
   const loadCandidates = async () => {
-    setIsLoading(true);
     try {
       const data = await api.candidates.list();
       setCandidates(data);
@@ -30,6 +25,11 @@ export default function CandidatesPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadCandidates(); // eslint-disable-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppShell>

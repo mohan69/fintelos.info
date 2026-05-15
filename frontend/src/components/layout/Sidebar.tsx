@@ -15,10 +15,12 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  LayoutDashboard,
 } from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "Chat", icon: MessageSquare },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/chat", label: "Copilot", icon: MessageSquare },
   { href: "/sourcing", label: "Sourcing", icon: Radar },
   { href: "/search", label: "Search", icon: Search },
   { href: "/candidates", label: "Candidates", icon: Users },

@@ -3,6 +3,7 @@
 import { useSourcingStore } from "@/stores/sourcing";
 import { SOURCE_CONFIGS } from "@/lib/sources";
 import { cn } from "@/lib/utils";
+import type { SourceType } from "@/types/sourcing";
 import {
   Database,
   FileText,
@@ -29,10 +30,10 @@ export function SourceSelector() {
   const { selectedSources, setSources } = useSourcingStore();
 
   const toggleSource = (sourceId: string) => {
-    if (selectedSources.includes(sourceId as any)) {
+    if (selectedSources.includes(sourceId as SourceType)) {
       setSources(selectedSources.filter((s) => s !== sourceId));
     } else {
-      setSources([...selectedSources, sourceId as any]);
+      setSources([...selectedSources, sourceId as SourceType]);
     }
   };
 

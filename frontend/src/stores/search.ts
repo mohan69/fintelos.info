@@ -71,12 +71,12 @@ export const useSearchStore = create<SemanticSearchState>((set, get) => ({
         isEmbedding: false,
         embeddingStatus: "complete",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       set({
         isLoading: false,
         isEmbedding: false,
         embeddingStatus: "error",
-        error: err.message || "Search failed",
+        error: err instanceof Error ? err.message : "Search failed",
       });
     }
   },

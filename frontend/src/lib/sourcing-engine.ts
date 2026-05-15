@@ -235,11 +235,11 @@ export async function executeSourcingQuery(
       job.sourcesCompleted.push(sourceType);
       onProgress?.(sourceType, "completed");
       return results;
-    } catch (err: any) {
+    } catch (err: unknown) {
       job.sourcesFailed.push(sourceType);
       job.errors.push({
         source: sourceType,
-        error: err.message || "Search failed",
+        error: err instanceof Error ? err.message : "Search failed",
         timestamp: new Date().toISOString(),
       });
       onProgress?.(sourceType, "failed");

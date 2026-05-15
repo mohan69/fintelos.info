@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -13,7 +13,7 @@ import {
   Brain,
   Zap,
   ArrowRight,
-  Command,
+  LayoutDashboard,
 } from "lucide-react";
 
 interface CommandItem {
@@ -35,11 +35,20 @@ export function CommandPalette() {
 
   const commands: CommandItem[] = [
     {
-      id: "chat",
-      label: "New Chat",
-      description: "Start a new conversation with AI",
-      icon: MessageSquare,
+      id: "dashboard",
+      label: "Dashboard",
+      description: "View recruiting intelligence overview",
+      icon: LayoutDashboard,
       action: () => { router.push("/"); setIsOpen(false); },
+      category: "Navigation",
+      shortcut: "⌘0",
+    },
+    {
+      id: "chat",
+      label: "AI Copilot",
+      description: "Start a conversation with AI",
+      icon: MessageSquare,
+      action: () => { router.push("/chat"); setIsOpen(false); },
       category: "Navigation",
       shortcut: "⌘1",
     },
@@ -120,8 +129,8 @@ export function CommandPalette() {
     {} as Record<string, CommandItem[]>
   );
 
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       // Open with Cmd+K or Ctrl+K
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
@@ -151,25 +160,22 @@ export function CommandPalette() {
           setIsOpen(false);
           break;
       }
-    },
-    [isOpen, filtered, selectedIndex]
-  );
+    };
 
-  useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+  }, [isOpen, filtered, selectedIndex]);
 
   useEffect(() => {
     if (isOpen) {
-      setQuery("");
-      setSelectedIndex(0);
+      setQuery(""); // eslint-disable-line react-hooks/set-state-in-effect
+      setSelectedIndex(0); // eslint-disable-line react-hooks/set-state-in-effect
       setTimeout(() => inputRef.current?.focus(), 50);
     }
   }, [isOpen]);
 
   useEffect(() => {
-    setSelectedIndex(0);
+    setSelectedIndex(0); // eslint-disable-line react-hooks/set-state-in-effect
   }, [query]);
 
   return (

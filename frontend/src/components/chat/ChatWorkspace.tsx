@@ -56,7 +56,7 @@ export function ChatWorkspace() {
                 transition={{ delay: 0.2 }}
                 className="text-3xl font-semibold mb-3 gradient-text"
               >
-                Welcome to Fintelos
+                Fintelos Copilot
               </motion.h1>
 
               <motion.p

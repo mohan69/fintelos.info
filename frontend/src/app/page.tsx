@@ -1,11 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAuthStore } from "@/stores/auth";
 import { AuthForm } from "@/components/auth/AuthForm";
-import { AppShell } from "@/components/layout/AppShell";
-import { ConversationList } from "@/components/chat/ConversationList";
-import { ChatWorkspace } from "@/components/chat/ChatWorkspace";
-import { useEffect } from "react";
+import DashboardPage from "./dashboard/page";
 
 export default function Home() {
   const { user, loadFromStorage } = useAuthStore();
@@ -18,12 +16,5 @@ export default function Home() {
     return <AuthForm />;
   }
 
-  return (
-    <AppShell>
-      <div className="flex h-full">
-        <ConversationList />
-        <ChatWorkspace />
-      </div>
-    </AppShell>
-  );
+  return <DashboardPage />;
 }

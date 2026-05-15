@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useAuthStore } from "@/stores/auth";
 import { useThemeStore } from "@/stores/theme";
+import { CommandPalette } from "@/components/ui/CommandPalette";
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const loadFromStorage = useAuthStore((s) => s.loadFromStorage);
@@ -32,7 +33,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider>
+        <CommandPalette />
+        {children}
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

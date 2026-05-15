@@ -291,8 +291,8 @@ export function createProvider(
             });
 
             return; // Success - exit retry loop
-          } catch (err: any) {
-            if (err.name === "AbortError") return;
+          } catch (err: unknown) {
+            if (err instanceof Error && err.name === "AbortError") return;
 
             retryCount++;
             if (retryCount > maxRetries) {
