@@ -10,15 +10,16 @@ class Settings(BaseSettings):
 
     # Database — reads DATABASE_URL from Railway environment, falls back to localhost for local dev
 DATABASE_URL: str = os.getenv(
-    "DATABASE_URL",
-    "postgresql+asyncpg://fintelos:fintelos_dev_2024@localhost:5432/fintelos",
-).replace(
-    "postgresql+psycopg2://",
-    "postgresql+asyncpg://"
-).replace(
-    "postgresql://",
-    "postgresql+asyncpg://"
-)
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "postgresql+asyncpg://fintelos:fintelos_dev_2024@localhost:5432/fintelos",
+    ).replace(
+        "postgresql+psycopg2://",
+        "postgresql+asyncpg://"
+    ).replace(
+        "postgresql://",
+        "postgresql+asyncpg://"
+    )
 
     # Redis — reads REDIS_URL from Railway environment, falls back to localhost for local dev
     REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
