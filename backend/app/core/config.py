@@ -10,6 +10,7 @@ class Settings(BaseSettings):
 
     # Database — reads DATABASE_URL from Railway environment, falls back to localhost for local dev
 DATABASE_URL: str = os.getenv(
+    # Database — reads DATABASE_URL from Railway environment, falls back to localhost for local dev
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL",
         "postgresql+asyncpg://fintelos:fintelos_dev_2024@localhost:5432/fintelos",
