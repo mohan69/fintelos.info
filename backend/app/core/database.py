@@ -35,4 +35,11 @@ async def get_db():
 
 async def init_db():
     async with engine.begin() as conn:
+
+        # Enable pgvector extension
+        await conn.exec_driver_sql(
+            'CREATE EXTENSION IF NOT EXISTS vector'
+        )
+
+        # Create tables
         await conn.run_sync(Base.metadata.create_all)
