@@ -19,4 +19,5 @@ websockets==12.0
 aiofiles==23.2.1
 orjson==3.9.10
 email-validator==2.1.0
-psycopg2-binary
+asyncpg
+asyncpg
