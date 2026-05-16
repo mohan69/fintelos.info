@@ -6,6 +6,7 @@ psycopg2-binary
 pgvector
 pydantic
 pydantic-settings
+email-validator
 python-jose[cryptography]
 passlib[bcrypt]
 python-multipart
