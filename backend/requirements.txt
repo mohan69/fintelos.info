@@ -1,16 +1,36 @@
 fastapi
 uvicorn[standard]
+
+# Database
 sqlalchemy
 asyncpg
 psycopg2-binary
 pgvector
+alembic
+
+# Validation / Settings
 pydantic
 pydantic-settings
 email-validator
+
+# Auth / Security
 python-jose[cryptography]
 passlib[bcrypt]
 python-multipart
+bcrypt
+
+# Redis
 redis
+hiredis
+
+# AI / HTTP
 openai
 httpx
-alembic
+tiktoken
+
+# Utilities
+python-dotenv
+aiofiles
+tenacity
+numpy
+pandas
