@@ -20,4 +20,4 @@ aiofiles==23.2.1
 orjson==3.9.10
 email-validator==2.1.0
 asyncpg
-psycopg2-binary
+psycopg2-binary# cache-break-1778931809
